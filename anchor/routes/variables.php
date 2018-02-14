@@ -123,7 +123,7 @@ Route::collection(array('before' => 'auth,csrf,install_exists'), function () {
             return Response::redirect('admin/extend/variables/edit/' . $key);
         }
 
-        Query::table(Base::table('meta'))->where('key', '=', $key)->update($input);
+        Query::table(Base::table('meta'))->where('key', '=', $input['key'])->update($input);
 
         Notify::success(__('extend.variable_updated'));
 
